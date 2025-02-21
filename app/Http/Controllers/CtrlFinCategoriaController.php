@@ -17,35 +17,22 @@ class CtrlFinCategoriaController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(StoreCtrlFinCategoriaRequest $request)
     {
-        //
+        CtrlFinCategoria::create($request->validated());
+
+        return response()->json(["Criado com sucesso"]) ;
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(CtrlFinCategoria $ctrlFinCategoria)
+    public function show(string $id)
     {
         //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(CtrlFinCategoria $ctrlFinCategoria)
-    {
-        //
+        return CtrlFinCategoria::findOrFail($id)->toJson();
     }
 
     /**
@@ -54,6 +41,9 @@ class CtrlFinCategoriaController extends Controller
     public function update(UpdateCtrlFinCategoriaRequest $request, CtrlFinCategoria $ctrlFinCategoria)
     {
         //
+        $ctrlFinCategoria->update($request->validated());
+        
+        return response()->json(["Alterado com sucesso!"]) ;
     }
 
     /**
@@ -62,5 +52,8 @@ class CtrlFinCategoriaController extends Controller
     public function destroy(CtrlFinCategoria $ctrlFinCategoria)
     {
         //
+        $ctrlFinCategoria->delete();
+
+        return response()->json(["Deletado com sucesso!"]) ;
     }
 }

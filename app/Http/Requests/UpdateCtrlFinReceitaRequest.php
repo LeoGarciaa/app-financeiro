@@ -11,7 +11,7 @@ class UpdateCtrlFinReceitaRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,11 @@ class UpdateCtrlFinReceitaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'nome' => 'required|min:3|max:255',
+            'valor' => 'required',
+            'mes' => 'required',
+            'ano' => 'required',
+            'recorencia' => 'required',
         ];
     }
 }

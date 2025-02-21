@@ -11,7 +11,7 @@ class StoreCtrlFinCategoriaRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class StoreCtrlFinCategoriaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'nome' => 'required|min:3|max:255',
+            'meta'  => 'required',
         ];
     }
 }

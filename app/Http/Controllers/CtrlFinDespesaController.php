@@ -14,15 +14,9 @@ class CtrlFinDespesaController extends Controller
     public function index()
     {
         //
+        return CtrlFinDespesa::all()->toJson();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -30,23 +24,20 @@ class CtrlFinDespesaController extends Controller
     public function store(StoreCtrlFinDespesaRequest $request)
     {
         //
+        CtrlFinDespesa::create($request->validated());
+
+        return response()->json(["Criado com sucesso"]) ;
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(CtrlFinDespesa $ctrlFinDespesa)
+    public function show(string $id)
     {
         //
+        return CtrlFinDespesa::findOrFail($id)->toJson();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(CtrlFinDespesa $ctrlFinDespesa)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -54,7 +45,11 @@ class CtrlFinDespesaController extends Controller
     public function update(UpdateCtrlFinDespesaRequest $request, CtrlFinDespesa $ctrlFinDespesa)
     {
         //
+        $ctrlFinDespesa->update($request->validated());
+        
+        return response()->json(["Alterado com sucesso!"]) ;
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -62,5 +57,9 @@ class CtrlFinDespesaController extends Controller
     public function destroy(CtrlFinDespesa $ctrlFinDespesa)
     {
         //
+           //
+           $ctrlFinDespesa->delete();
+
+           return response()->json(["Deletado com sucesso!"]) ;
     }
 }

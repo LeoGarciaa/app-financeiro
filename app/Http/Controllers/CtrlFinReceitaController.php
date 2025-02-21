@@ -17,35 +17,22 @@ class CtrlFinReceitaController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(StoreCtrlFinReceitaRequest $request)
     {
-        //
+        CtrlFinReceita::create($request->validated());
+
+        return response()->json(["Criado com sucesso"]) ;
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(CtrlFinReceita $ctrlFinReceita)
+    public function show(string $id)
     {
         //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(CtrlFinReceita $ctrlFinReceita)
-    {
-        //
+        return CtrlFinReceita::findOrFail($id)->toJson();
     }
 
     /**
@@ -54,13 +41,20 @@ class CtrlFinReceitaController extends Controller
     public function update(UpdateCtrlFinReceitaRequest $request, CtrlFinReceita $ctrlFinReceita)
     {
         //
+        $ctrlFinReceita->update($request->validated());
+        
+        return response()->json(["Alterado com sucesso!"]) ;
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CtrlFinReceita $crtFinReceita)
+    public function destroy(CtrlFinReceita $ctrlFinReceita)
     {
         //
+        //return $ctrlFinReceita->toJson();
+        $ctrlFinReceita->delete();
+
+        return response()->json(["Deletado com sucesso!"]) ;
     }
 }

@@ -22,7 +22,14 @@ class StoreCtrlFinDespesaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'valor' => 'required',
+            'ctrl_fin_categorias_id' => 'required',
+            'nome' => 'required|min:3|max:255',
+            'data_pagamento' => 'required',
+            'mes' => 'required',
+            'ano' => 'required',
+            'recorencia' => 'required',
+            'parcelas' => 'required'
         ];
     }
 }
