@@ -38,10 +38,10 @@ class CtrlFinCategoriaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCtrlFinCategoriaRequest $request, CtrlFinCategoria $ctrlFinCategoria)
+    public function update(UpdateCtrlFinCategoriaRequest $request, string $id)
     {
         //
-        $ctrlFinCategoria->update($request->validated());
+        CtrlFinCategoria::findOrFail($id)->update($request->validated());
         
         return response()->json(["Alterado com sucesso!"]) ;
     }
@@ -49,10 +49,10 @@ class CtrlFinCategoriaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CtrlFinCategoria $ctrlFinCategoria)
+    public function destroy(string $id)
     {
         //
-        $ctrlFinCategoria->delete();
+        CtrlFinCategoria::findOrFail($id)->delete();
 
         return response()->json(["Deletado com sucesso!"]) ;
     }

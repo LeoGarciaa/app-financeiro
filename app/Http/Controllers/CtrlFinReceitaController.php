@@ -38,10 +38,10 @@ class CtrlFinReceitaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCtrlFinReceitaRequest $request, CtrlFinReceita $ctrlFinReceita)
+    public function update(UpdateCtrlFinReceitaRequest $request, string $id)
     {
         //
-        $ctrlFinReceita->update($request->validated());
+        ctrlFinReceita::findOrFail( $id )->update($request->validated());
         
         return response()->json(["Alterado com sucesso!"]) ;
     }
@@ -49,11 +49,10 @@ class CtrlFinReceitaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CtrlFinReceita $ctrlFinReceita)
+    public function destroy(string $id)
     {
         //
-        //return $ctrlFinReceita->toJson();
-        $ctrlFinReceita->delete();
+        ctrlFinReceita::findOrFail($id)->delete();
 
         return response()->json(["Deletado com sucesso!"]) ;
     }

@@ -42,10 +42,10 @@ class CtrlFinDespesaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCtrlFinDespesaRequest $request, CtrlFinDespesa $ctrlFinDespesa)
+    public function update(UpdateCtrlFinDespesaRequest $request, string $id)
     {
         //
-        $ctrlFinDespesa->update($request->validated());
+        CtrlFinReceitaController::findOrFail($id)->update($request->validated());
         
         return response()->json(["Alterado com sucesso!"]) ;
     }
@@ -54,11 +54,11 @@ class CtrlFinDespesaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CtrlFinDespesa $ctrlFinDespesa)
+    public function destroy(string $id)
     {
         //
            //
-           $ctrlFinDespesa->delete();
+           CtrlFinReceitaController::findOrFail($id)->delete();
 
            return response()->json(["Deletado com sucesso!"]) ;
     }
