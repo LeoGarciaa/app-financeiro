@@ -45,7 +45,7 @@ class CtrlFinDespesaController extends Controller
     public function update(UpdateCtrlFinDespesaRequest $request, string $id)
     {
         //
-        CtrlFinReceitaController::findOrFail($id)->update($request->validated());
+        CtrlFinDespesa::findOrFail($id)->update($request->validated());
         
         return response()->json(["Alterado com sucesso!"]) ;
     }
@@ -58,7 +58,7 @@ class CtrlFinDespesaController extends Controller
     {
         //
            //
-           CtrlFinReceitaController::findOrFail($id)->delete();
+           CtrlFinDespesa::findOrFail($id)->delete();
 
            return response()->json(["Deletado com sucesso!"]) ;
     }
