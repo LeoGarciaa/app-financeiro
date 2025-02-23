@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('ctrl_fin_categorias', function (Blueprint $table) {
             $table->id();
             $table->string('nome', 50);
-            $table->decimal('meta', total: 2, places: 2 );
+            $table->decimal(column: 'meta', total: 3, places: 2 );
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
             $table->softDeletes();

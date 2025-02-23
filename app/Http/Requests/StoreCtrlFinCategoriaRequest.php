@@ -23,7 +23,7 @@ class StoreCtrlFinCategoriaRequest extends FormRequest
     {
         return [
             'nome' => 'required|min:3|max:255',
-            'meta'  => 'required',
+            'meta'  => 'required|decimal:1,2|min:0.0|max:1.0',
         ];
     }
 }

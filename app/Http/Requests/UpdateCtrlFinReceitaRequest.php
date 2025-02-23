@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateCtrlFinReceitaRequest extends FormRequest
 {
@@ -24,9 +25,9 @@ class UpdateCtrlFinReceitaRequest extends FormRequest
         return [
             'nome' => 'required|min:3|max:255',
             'valor' => 'required',
-            'mes' => 'required',
+            'mes' => ['required',Rule::in(["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"])],
             'ano' => 'required',
-            'recorencia' => 'required',
+            'recorencia' => ['nullable',Rule::in(["D","M","T","S","A"])]
         ];
     }
 }

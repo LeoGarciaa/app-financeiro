@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateCtrlFinDespesaRequest extends FormRequest
 {
@@ -22,7 +23,14 @@ class UpdateCtrlFinDespesaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'valor' => 'required',
+            'ctrl_fin_categorias_id' => 'required|exists:ctrl_fin_categorias,id',
+            'nome' => 'required|min:3|max:255',
+            'data_pagamento' => ['nullable',Rule::date()->format("Y-m-d")],
+            'mes' => ['required',Rule::in(["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"])],
+            'ano' => 'required|min:4|max:4',
+            'recorencia' => ['nullable',Rule::in(["D","M","T","S","A"])],
+            'parcelas' => 'nullable|integer'
         ];
     }
 }
