@@ -12,4 +12,11 @@ class CtrlFinDespesa extends Model
     use HasFactory;
     use SoftDeletes;
     protected $guarded = [];
+
+
+    public function categoria(): HasOne
+    {
+        return $this->hasOne(CtrlFinCategoria::class)
+    }
 }
+;

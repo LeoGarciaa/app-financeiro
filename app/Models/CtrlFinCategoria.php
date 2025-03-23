@@ -13,5 +13,4 @@ class CtrlFinCategoria extends Model
     use HasFactory;
     use SoftDeletes;
     protected $guarded = [];
-
 }
